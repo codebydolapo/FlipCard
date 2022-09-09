@@ -1,6 +1,6 @@
-const MemoryToken = artifacts.require("MemoryToken");
+const SequinCoin = artifacts.require("SequinCoin");
 
 module.exports = function(deployer) {
-  deployer.deploy(MemoryToken);
+  deployer.deploy(SequinCoin);
 
 };
