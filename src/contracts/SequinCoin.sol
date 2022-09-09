@@ -9,7 +9,7 @@ contract SequinCoin is ERC721Full {
   }
 
   function mint(address _to, string memory tokenURI) public returns(bool){
-    uint356 _tokenId = totalSupply.add(1);
+    uint256 _tokenId = totalSupply().add(1);
     _mint(_to, _tokenId);
 
     _setTokenURI(_tokenId, tokenURI);

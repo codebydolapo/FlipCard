@@ -38,7 +38,17 @@ contract('SequinCoin', (accounts) => {
     })
 
     describe('token distribution', async()=>{
-      await token.mint()
+      it('mints tokens', async ()=>{
+        await token.mint(accounts[0], "https://www.nft.com")
+        const result = await token.totalSupply()
+        assert.equal(result.toString(), '1', 'total supply is correct')
+  
+        const balance = await token.balanceOf(accounts[0]);
+        assert.equal(balance.toString(), '1', 'balanceOf is correct')
+
+        const ownerOf = await token.ownerOf('1');
+        assert.equal(ownerOf.toString(), accounts[0].toString(), "ownerOf is correct")
+      })
     })
 
   })
