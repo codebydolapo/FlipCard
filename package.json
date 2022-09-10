@@ -1,8 +1,8 @@
 {
-  "name": "blockchain-game",
+  "name": "flipcard",
   "version": "0.1.0",
   "description": "Blockchain memory game",
-  "author": "gregory@dappuniversity.com",
+  "author": "codebydolapo",
   "dependencies": {
     "@openzeppelin/contracts": "^2.3.0",
     "babel-polyfill": "6.26.0",

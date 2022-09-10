@@ -39,9 +39,12 @@
 .address-container{
     height: auto;
     width: auto;
-    padding: 7px;
+    padding: 5px;
     border-radius: 1rem;
-    background: white
+    background: white;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
 }
 
 .navbar-contactAddress{
