@@ -1,0 +1,51 @@
+
+.navbar {
+    width: 100vw;
+    height: 50px;
+    background-color: black;
+    display: flex;
+    /* padding: 0; */
+}
+
+.navbar-left {
+    width: 50%;
+    height: inherit;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0px 20px;
+}
+
+.brain{
+    height: 40px;
+    width: auto;
+    margin-right: 20px;
+}
+
+.nav-title{
+    color: white;
+}
+
+.navbar-right {
+    width: 50%;
+    height: inherit;
+    /* border: 1px solid white; */
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.address-container{
+    height: auto;
+    width: auto;
+    padding: 7px;
+    border-radius: 1rem;
+    background: white
+}
+
+.navbar-contactAddress{
+    color: rgb(2, 38, 116);
+    font-size: 14px;
+    /* font-weight: 500; */
+}

@@ -1,0 +1,13 @@
+.mainbody{
+    width: 100vw;
+    height: calc(100vh - 50px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gameDiv{
+    width: 50rem;
+    height: 100%;
+    border: 1px solid black;
+}
