@@ -3,12 +3,12 @@ import React from 'react'
 import Card from './Card'
 import Collected from './Collected'
 import { blank, cards } from '../data/cards'
-import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { setRandomArray, addRandomIndex } from '../reducers/actions'
-import { randomArray } from '../reducers/reducers'
-//import { useSelector } from 'react-redux'
+import { addRandomIndex } from '../reducers/actions'
 import { useState } from 'react'
+
+
+
 
 function Mainbody() {
 
@@ -47,9 +47,7 @@ function Mainbody() {
     }
 
 
-    useEffect(() => {
-
-    })
+    
 
 
     return (
@@ -61,7 +59,7 @@ function Mainbody() {
                             image={picState ? url : blank}
                             key={id}
                             id={id}
-                            randomIndex={_randomIndex ? cards[_randomIndex].id : _randomIndex == 13 ? 0 : Math.floor(Math.random() * 12)}
+                            randomIndex={_randomIndex ? cards[_randomIndex].id : _randomIndex === "13" ? 0 : Math.floor(Math.random() * 12)}
                         />
                     })}
                 </div>

@@ -16,3 +16,7 @@
 .card:hover{
     transform: scale(1.05)
 }
+
+.card:active{
+    transform: rotateY(360deg)
+}

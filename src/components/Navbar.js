@@ -6,7 +6,6 @@ import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { addAccount, setTokenSupply, addTokenURIs, setCardArray } from '../reducers/actions'
 import SequinCoin from '../abis/SequinCoin.json'
-import { FormText } from 'react-bootstrap'
 import { cards } from '../data/cards'
 
 
@@ -15,7 +14,7 @@ import { cards } from '../data/cards'
 function Navbar() {
 
     const [connect, setConnect] = useState(false)
-    const [connectedState, setConnectedState] = useState(false)
+    //const [connectedState, setConnectedState] = useState(false)
     const [account, setAccount] = useState('')
     const [truncAccount, setTruncAccount] = useState('')
 
@@ -25,10 +24,10 @@ function Navbar() {
         if (window.ethereum) {
             window.web3 = new Web3(window.ethereum)
             await window.ethereum.enable()
-            setConnectedState(true)
+            //setConnectedState(true)
         } else if (window.web3) {
             window.web3 = new Web3(window.web3.currentProvider)
-            setConnectedState(true)
+            //setConnectedState(true)
         } else {
             window.alert('Non-ethereum browser detected')
         }
@@ -39,7 +38,8 @@ function Navbar() {
         const _web3 = window.web3
         const accounts = await _web3.eth.getAccounts();
         //this is the account address itself
-        const account = accounts[0]
+        //const account = accounts[0]
+        setAccount(accounts[0])
         //this displays a fancy, shortened connected address
         const _truncAccount = `${account.slice(0, 8)}...${account.slice(account.length - 8)}`
         setTruncAccount(_truncAccount)
