@@ -12,6 +12,10 @@ import { useState } from 'react'
 
 function Mainbody() {
 
+    // useEffect(()=>{
+    //     alert('Welcome! Click on play button to shuffle cards')
+    // }, [])
+
 
     const [_randomIndex, setRandomIndex] = useState(null)
     const [picState, setPicState] = useState(false)
@@ -22,9 +26,9 @@ function Mainbody() {
     const dispatch = useDispatch()
 
     const score = useSelector(state => state.score)
-    const collected = useSelector(state => state.collected)
+    const collected = useSelector(state => state.cardsWon)
     const randomIndex = useSelector(state => state.randomIndex)
-    
+
 
 
 
@@ -32,11 +36,11 @@ function Mainbody() {
         // let _randomArray = []
         // _randomArray.push(Math.floor(Math.random() * 12))
         // dispatch(setRandomArray(_randomArray))
-        let randomNumber = Math.floor(Math.random() * 12)
+        let randomNumber = Math.floor(Math.random() * 13)
         setRandomIndex(randomNumber)
         dispatch(addRandomIndex(randomNumber))
         setPicState(true)
-        setTimeout(()=>setPicState(false), 2000)
+        setTimeout(() => setPicState(false), 2000)
         //console.log(picState)
         //randomizes the cards
         setRandomCards(cards.map(value => ({ value, sort: Math.random() })).sort((a, b) => a.sort - b.sort).map(({ value }) => value))
@@ -52,12 +56,12 @@ function Mainbody() {
         <div className={'mainbody'}>
             <div className={'gameDiv'}>
                 <div className={'card-container'}>
-                    {randomCards.map(({url, id})=>{
+                    {randomCards.map(({ url, id }) => {
                         return <Card
-                           image = {picState ? url : blank}
-                           key = {id}
-                           id={id}
-                           randomIndex = {_randomIndex ? cards[_randomIndex].id : 13}
+                            image={picState ? url : blank}
+                            key={id}
+                            id={id}
+                            randomIndex={_randomIndex ? cards[_randomIndex].id : _randomIndex == 13 ? 0 : Math.floor(Math.random() * 12)}
                         />
                     })}
                 </div>
@@ -66,20 +70,24 @@ function Mainbody() {
                     <div className={'scoreboard-content'}>
                         <div className={'score-div'}>
                             <h1 className={'score'}>Score: <span>{score}</span></h1>
-                            <h1 className={'score'}>Collected: <span>{collected}</span></h1>
+                            <h1 className={'score'}>Collected: <span>{collected.length}</span></h1>
                         </div>
                         <div className={'play-div'}>
                             <button className={'play-button'} onClick={generateRandomCard}>Play</button>
-                            <p>Click to shuffle deck, play game and win NFT</p>
+                            {/* <p>Click to shuffle deck, play game and win NFT</p> */}
                         </div>
                         <div className={'find'}>
-                            <h1 className={'find-title'}>Find:</h1>
+                            {/* <h1 className={'find-title'}>Find:</h1> */}
                             <img className='find-image' src={_randomIndex != null ? cards[randomIndex].url : blank} alt='' />
                         </div>
                         <div className={'collected-nfts'}>
-                            <h1 className={'collection-title'}>Collection</h1>
+                            {/* <h1 className={'collection-title'}>Collection</h1> */}
                             <div className={'collection-div'}>
-                                <Collected />
+                                {collected.map(({ url }) => {
+                                    return <Collected
+                                        image={url}
+                                    />
+                                })}
                             </div>
                         </div>
                     </div>

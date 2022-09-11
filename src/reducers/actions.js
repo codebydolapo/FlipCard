@@ -37,9 +37,10 @@ export const setCardsChosenId = (cardsChosenId)=>{
         cardsChosenId
     }
 }
+
 export const setCardsWon = (cardsWon)=>{
     return{
-        type: '',
+        type: "ADD_CARDS_WON",
         cardsWon
     }
 }
