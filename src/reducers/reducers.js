@@ -63,6 +63,42 @@ export const cardsWon = (state=[], action)=>{
     }
 }
 
+export const randomArray = (state = [], action)=>{
+    switch(action.type){
+        case 'ADD_RANDOM_PICS':
+            return action.randomArray
+        default:
+            return state
+    }
+}
+
+const randomIndex = (state = 13, action)=>{
+    switch(action.type){
+        case "ADD_RANDOM_INDEX":
+            return action.randomIndex
+        default:
+            return state
+    }
+}
+
+export const score = (state = 0, action)=>{
+    switch(action.type){
+        case "SET_SCORE":
+            return state + 10
+        default:
+            return state
+    }
+}
+
+export const collected = (state = 0, action)=>{
+    switch(action.type){
+        case "SET_COLLECTED":
+            return state + 1
+        default:
+            return state
+    }
+}
+
 export const allReducers = combineReducers({
     account,
     tokenURIs,
@@ -70,5 +106,9 @@ export const allReducers = combineReducers({
     cardArray,
     cardsChosen,
     cardsChosenId,
-    cardsWon
+    cardsWon,
+    randomArray,
+    randomIndex,
+    score,
+    collected
 })

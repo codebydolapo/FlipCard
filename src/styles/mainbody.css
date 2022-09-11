@@ -1,4 +1,4 @@
-.mainbody{
+.mainbody {
     width: 100vw;
     height: calc(100vh - 50px);
     display: flex;
@@ -6,8 +6,146 @@
     align-items: center;
 }
 
-.gameDiv{
-    width: 50rem;
+.gameDiv {
+    width: 100%;
     height: 100%;
-    border: 1px solid black;
+    /* border: 1px solid black; */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.card-container {
+    width: 60%;
+    height: 100%;
+    /* border: 1px solid black; */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.score-board {
+    width: 35%;
+    height: 90vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px;
+    /* border: 1px solid black; */
+}
+
+.scoreboard-title {
+    font-size: 2rem;
+    line-height: 2rem;
+    font-weight: bold;
+    /* font-family: oswald; */
+    text-transform: uppercase;
+    background: black;
+    color: white;
+    padding: 10px;
+    border-radius: 5px 15px;
+}
+
+.scoreboard-content {
+    width: 100%;
+    min-height: 90%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.score-div {
+    width: 100%;
+    height: 10%;
+    /* border: 1px solid green; */
+    padding: 0 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.score {
+    font-size: 1.2rem;
+    font-weight: lighter;
+}
+
+.play-div {
+    width: 100%;
+    height: auto;
+    border: 1px solid grey;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.play-div>p {
+    font-size: 0.8rem;
+}
+
+.play-button {
+    width: 7rem;
+    height: 1.5rem;
+    border-radius: 5px;
+    border: 0;
+    outline: 0;
+    background: crimson;
+    color: white;
+    cursor: pointer;
+}
+
+.find {
+    width: 100%;
+    height: 20%;
+    border: 1px solid grey;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.find-title {
+    font-size: 1.2rem;
+    font-weight: lighter;
+}
+
+.find-image {
+    width: 5rem;
+    height: 5rem;
+    border-radius: inherit;
+    border: 1px solid white;
+    margin-left: 2rem;
+    border-radius: 10px;
+}
+
+.collected-nfts {
+    width: 100%;
+    height: 40%;
+    padding: 0 15px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+
+.collection-title {
+    font-size: 1.5rem;
+    font-weight: lighter;
+    text-decoration: underline;
+}
+
+.collection-div {
+    min-height: 85%;
+    height: 85%;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
 }

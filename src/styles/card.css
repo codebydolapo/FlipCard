@@ -1,0 +1,18 @@
+.card{
+    width: 12.5vw;
+    height: 12.5vw;
+    border-radius: 20px;
+    box-shadow: 1px 1px 10px grey;
+    transition: all ease 200ms;
+    cursor: pointer;
+}
+
+.card-image{
+    width: 100%;
+    height: auto;
+    border-radius: inherit;
+}
+
+.card:hover{
+    transform: scale(1.05)
+}

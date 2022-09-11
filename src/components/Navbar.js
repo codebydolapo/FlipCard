@@ -4,9 +4,11 @@ import '.././styles/navbar.css'
 import Web3 from 'web3'
 import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { addAccount, setTokenSupply, addTokenURIs } from '../reducers/actions'
+import { addAccount, setTokenSupply, addTokenURIs, setCardArray } from '../reducers/actions'
 import SequinCoin from '../abis/SequinCoin.json'
 import { FormText } from 'react-bootstrap'
+import { cards } from '../data/cards'
+
 
 
 
@@ -36,7 +38,9 @@ function Navbar() {
         await loadWeb3()
         const _web3 = window.web3
         const accounts = await _web3.eth.getAccounts();
+        //this is the account address itself
         const account = accounts[0]
+        //this displays a fancy, shortened connected address
         const _truncAccount = `${account.slice(0, 8)}...${account.slice(account.length - 8)}`
         setTruncAccount(_truncAccount)
         dispatch(addAccount(account))
@@ -57,12 +61,15 @@ function Navbar() {
             //load tokens
             let balanceOf = await tokenContract.methods.balanceOf(account).call()
             let tokenURIs = []
-            for(let i = 0; i < balanceOf; i++){
+            for (let i = 0; i < balanceOf; i++) {
                 let id = await tokenContract.methods.tokenOfOwnerByIndex(account, i).call()
                 let tokenURI = await tokenContract.methods.tokenURI(id).call()
                 tokenURIs.push(tokenURI)
                 dispatch(addTokenURIs(tokenURIs))
             }
+            //getting card array and randomizing
+            const _cards = cards.map(value => ({ value, sort: Math.random() })).sort((a, b) => a.sort - b.sort).map(({ value }) => value)
+            dispatch(setCardArray(_cards))
         } else {
             alert("Smart Contract Not Deployed")
         }
@@ -72,9 +79,11 @@ function Navbar() {
         if (connect === true) {
             loadBlockchainData()
             getNetworkData()
-        }
+        } 
     }, [connect])
 
+
+    //toggles connection State
     function toggleConnect() {
         if (connect) {
             setConnect(false)
@@ -85,7 +94,7 @@ function Navbar() {
 
 
     return (
-        <dic className={"navbar"}>
+        <div className={"navbar"}>
             <div className={"navbar-left"}>
                 <img src={brain} className="brain" alt="" />
                 <h1 className={'nav-title'}>FlipCard</h1>
@@ -96,7 +105,7 @@ function Navbar() {
                     {!connect && <button className={'address-container'} onClick={toggleConnect}>Connect Your Wallet</button>}
                 </div>
             </div>
-        </dic>
+        </div>
     )
 }
 

@@ -43,3 +43,29 @@ export const setCardsWon = (cardsWon)=>{
         cardsWon
     }
 }
+
+export const setRandomArray = (randomArray)=>{
+    return{
+        type: 'ADD_RANDOM_PICS',
+        randomArray
+    }
+}
+
+export const addRandomIndex = (randomIndex)=>{
+    return{
+        type: "ADD_RANDOM_INDEX",
+        randomIndex
+    }
+}
+
+export const setScore = ()=>{
+    return{
+        type: "SET_SCORE",
+    }
+}
+
+export const setCollected = ()=>{
+    return{
+        type: "SET_COLLECTED",
+    }
+}

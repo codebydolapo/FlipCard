@@ -1,0 +1,12 @@
+.collected{
+    width: 7vw;
+    height: 7vw;
+    border-radius: 10px;
+}
+
+.collected-nft{
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+
+}
