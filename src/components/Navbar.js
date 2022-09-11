@@ -3,7 +3,7 @@ import brain from '../brain.png'
 import '.././styles/navbar.css'
 import Web3 from 'web3'
 import { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { addAccount, setTokenSupply, addTokenURIs, setCardArray } from '../reducers/actions'
 import SequinCoin from '../abis/SequinCoin.json'
 import { cards } from '../data/cards'
@@ -15,8 +15,10 @@ function Navbar() {
 
     const [connect, setConnect] = useState(false)
     //const [connectedState, setConnectedState] = useState(false)
-    const [account, setAccount] = useState('')
+    //const [account, setAccount] = useState('')
     const [truncAccount, setTruncAccount] = useState('')
+
+    const account = useSelector(state => state.account)
 
     const dispatch = useDispatch()
 
@@ -39,16 +41,19 @@ function Navbar() {
         const accounts = await _web3.eth.getAccounts();
         //this is the account address itself
         //const account = accounts[0]
-        setAccount(accounts[0])
+        //setAccount(accounts[0])
         //this displays a fancy, shortened connected address
-        const _truncAccount = `${account.slice(0, 8)}...${account.slice(account.length - 8)}`
+        const _truncAccount = `${accounts[0].slice(0, 8)}...${accounts[0].slice(accounts[0].length - 8)}`
         setTruncAccount(_truncAccount)
-        dispatch(addAccount(account))
+        alert(accounts[0])
+        dispatch(addAccount(accounts[0]))
 
     }
 
     async function getNetworkData() {
-        const networkId = await Web3.eth.net.getId()
+        const web3 = window.web3
+        const networkId = await web3.eth.net.getId()
+        alert(networkId)
         const networkData = SequinCoin.networks[networkId]
         //fetching the token contract
         if (networkData) {

@@ -28,6 +28,7 @@ function Mainbody() {
     const score = useSelector(state => state.score)
     const collected = useSelector(state => state.cardsWon)
     const randomIndex = useSelector(state => state.randomIndex)
+    const account = useSelector(state => state.account)
 
 
 
@@ -36,14 +37,18 @@ function Mainbody() {
         // let _randomArray = []
         // _randomArray.push(Math.floor(Math.random() * 12))
         // dispatch(setRandomArray(_randomArray))
-        let randomNumber = Math.floor(Math.random() * 13)
-        setRandomIndex(randomNumber)
-        dispatch(addRandomIndex(randomNumber))
-        setPicState(true)
-        setTimeout(() => setPicState(false), 2000)
-        //console.log(picState)
-        //randomizes the cards
-        setRandomCards(cards.map(value => ({ value, sort: Math.random() })).sort((a, b) => a.sort - b.sort).map(({ value }) => value))
+        if(account !== ""){
+            let randomNumber = Math.floor(Math.random() * 13)
+            setRandomIndex(randomNumber)
+            dispatch(addRandomIndex(randomNumber))
+            setPicState(true)
+            setTimeout(() => setPicState(false), 2000)
+            //console.log(picState)
+            //randomizes the cards
+            setRandomCards(cards.map(value => ({ value, sort: Math.random() })).sort((a, b) => a.sort - b.sort).map(({ value }) => value))
+        }else{
+            alert('Please Connect Wallet')
+        }
     }
 
 
